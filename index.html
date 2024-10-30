@@ -8,37 +8,37 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-<body>
-    <section class="d-flex h-auto">
+<body class="overflow-x">
+    <section class="Todoliste-page d-flex h-auto ">
         <!-- partie d'aside -->
-        <aside class="partie-aside w-25">
+        <aside class="partie-aside w-auto">
             <h1>To Do Liste</h1>
             <details class="text-center w-75 ">
-                <summary>Invit Workspace<i class="fa-solid fa-chevron-down fa-2xs"></i></summary>
+                <summary class="list-unstyled">Invit Workspace<i class="fa-solid fa-chevron-down fa-2xs"></i></summary>
                 <details >
-                    <summary>Add +</summary>
-                    <input type="text" placeholder="Title">
-                    <a href="workspace.html">Add</a>
+                    <summary class="list-unstyled">Add +</summary>
+                    <input class="input-group" type="text" placeholder="Title">
+                    <a href="">Add</a>
                 </details>
             </details>
         </aside>
         
-        <div class="w-75 d-flex flex-column gap-3 px-5">
+        <div class="w-100 d-flex flex-column align-items-center gap-3 px-5">
             <!--header-->
-            <div class="d-flex justify-content-between px-5 p-1">
+            <div class="d-flex justify-content-between px-3 p-1 w-100">
                 <div>
-                    <input class="search-input border-0 rounded-pill w-75" type="search" placeholder="search">
-                    <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button> 
+                    <input class="search-input border-0 rounded-pill w-100  px-3" type="search" placeholder="search">
+                    <!-- <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>  -->
                 </div>
-                <div class="w-25 d-flex justify-content-between">
+                <div class="w-25 d-flex justify-content-evenly ">
                     <button class="btn btn-outline-light text-black ">Sign in</button>
                     <button class="btn btn-primary text-black ">Sign up</button>
                 </div>
             </div>  
             <!-- page d'introduction  -->
-            <div class="d-none d-flex flex-column justify-content-around align-items-center">
+            <div class="w-100 vh-100  d-flex flex-column justify-content-evenly align-items-center">
                 <h1>Welcome to “ To Do List ” !</h1>
-                <p class="w-75 text-center">We are thrilled to have you join us in your new productivity space Here, you can easily organize your daily tasks, stay focused on your goals, and maximize your efficiency.</p>
+                <p class="w-75 text-center lh-lg">We are thrilled to have you join us in your new productivity space Here, you can easily organize your daily tasks, stay focused on your goals, and maximize your efficiency.</p>
                 <h2 class="w-75">Why use our To Do List?</h2>
                 <ul class="w-75 gap-3 d-flex flex-column text-align-center">
                     <li><strong>Simplicity:</strong> Add, edit, and delete your tasks with just a few clicks.
@@ -50,20 +50,52 @@
                     <li><strong>Tracking:</strong> Check off your tasks as you complete them and 
                         feel the satisfaction of each accomplishment.</li>
                 </ul>
-                <p class="w-75 text-center">Start creating your task list now and discover how easy it is to stay organized and motivated. Don’t hesitate to explore all the features to customize your experience.</p>
+                <p class="w-75 text-center lh-lg">Start creating your task list now and discover how easy it is to stay organized and motivated. Don’t hesitate to explore all the features to customize your experience.</p>
             </div>
             <!-- partie de workspace -->
-            <div class="overflow-auto row py-2 text-primary border-1 border-bottom border-primary d-flex align-items-center">
+            <div class="w-100 d-none row py-2 text-primary border-1 border-bottom border-primary d-flex align-items-center">
                 <div class="col-8"><h4>Title</h4></div>
                 <div class="col-2 text-end"><h4>Add a task</h4></div>
                 <div class="col-2 text-end"><h4>Delete</h4></div>
-                
-                
             </div>
-            <div>
-
-            </div>     
-            <div class="min-vh-100 overflow-auto d-flex justify-content-between">
+            <!--  form d'entrer les donner d'un card -->
+            <div class="d-none form-position w-50">
+                <form class="form-card d-flex flex-column align-items-center gap-4 p-3 border border-primary" >
+                    <div class="row w-100">
+                        <label class="col-6" for="title">Title</label>
+                        <input class="col-6 rounded-2 border-0" id="title" type="text" placeholder="title" required>
+                    </div>
+                    <div class="row w-100">
+                        <label class="col-6" for="descreption">Descreption</label>
+                        <input class="col-6 rounded-2 border-0" id="descreption" type="text" placeholder="descreption" required>
+                    </div>
+                    <div class="row w-100 ">
+                        <label class="col-6" for="status">Status</label>
+                        <select class="col-6 border-0 rounded-2" name="status" id="Status" required>
+                            <option value="To Do">To Do</option>
+                            <option value="Doing">Doing</option>
+                            <option value="Done">Done</option>
+                        </select>
+                    </div>
+    
+                    <div class="row w-100">
+                        <label class="col-6" for="date">Due date</label>
+                        <input class="col-6 rounded-2 border-0" id="date" type="date"  required>
+                    </div>
+    
+                    <div class="row w-100 ">
+                        <label class="col-6" for="priority">Priority</label>
+                        <select class="col-6 border-0 rounded-2" name="priority" id="priority" required>
+                            <option value="P1">P1</option>
+                            <option value="P2">P2</option>
+                            <option value="P3">P3</option>
+                        </select>
+                    </div>
+                    <button class="col-2 btn btn-primary border-0" type="submit">Add</button>
+                </form>     
+            </div>
+            
+            <div class="d-none w-100 min-vh-100 d-flex justify-content-between flex-row">
                 <div class="status-card col-3 ma rounded-2 px-2">
                     <h4>To Do</h4>
                 </div>
