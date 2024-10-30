@@ -4,34 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To DO List</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
-    <section class="d-flex">
-        <aside class="bg-primary">
+    <section class="d-flex h-auto">
+        <!-- partie d'aside -->
+        <aside class="partie-aside w-25">
             <h1>To Do Liste</h1>
-            <div class="d-flex align-items-center justify-content-evenly">
-                <p>Invit Workspace</p>
-                <i class="fa-solid fa-chevron-down fa-2xs"></i>
-            </div>
+            <details class="text-center w-75 ">
+                <summary>Invit Workspace<i class="fa-solid fa-chevron-down fa-2xs"></i></summary>
+                <details >
+                    <summary>Add +</summary>
+                    <input type="text" placeholder="Title">
+                    <a href="workspace.html">Add</a>
+                </details>
+            </details>
         </aside>
-        <div class="col">
-            <div class="row justify-content-evenly">
-                <div class="col-3 bg-primary">
-                    <h4>To Do</h4>
-                    <div class="card-bady">
-                        <h5 class="card-title">title</h5>
-                        <p>description</p>
-                    </div>
+        
+        <div class="w-75 d-flex flex-column gap-3 px-5">
+            <!--header-->
+            <div class="d-flex justify-content-between px-5 p-1">
+                <div>
+                    <input class="search-input border-0 rounded-pill w-75" type="search" placeholder="search">
+                    <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button> 
                 </div>
-                <div class="col-3 bg-primary">Doing</div>
-                <div class="col-3 bg-primary">Done</div>
+                <div class="w-25 d-flex justify-content-between">
+                    <button class="btn btn-outline-light text-black ">Sign in</button>
+                    <button class="btn btn-primary text-black ">Sign up</button>
+                </div>
+            </div>  
+            <!-- page d'introduction  -->
+            <div class="d-none d-flex flex-column justify-content-around align-items-center">
+                <h1>Welcome to “ To Do List ” !</h1>
+                <p class="w-75 text-center">We are thrilled to have you join us in your new productivity space Here, you can easily organize your daily tasks, stay focused on your goals, and maximize your efficiency.</p>
+                <h2 class="w-75">Why use our To Do List?</h2>
+                <ul class="w-75 gap-3 d-flex flex-column text-align-center">
+                    <li><strong>Simplicity:</strong> Add, edit, and delete your tasks with just a few clicks.
+                    </li>
+    
+                    <li><strong>Organization:</strong> Sort your tasks by categories or priorities for 
+                        clear and effective management.</li>
+    
+                    <li><strong>Tracking:</strong> Check off your tasks as you complete them and 
+                        feel the satisfaction of each accomplishment.</li>
+                </ul>
+                <p class="w-75 text-center">Start creating your task list now and discover how easy it is to stay organized and motivated. Don’t hesitate to explore all the features to customize your experience.</p>
             </div>
+            <!-- partie de workspace -->
+            <div class="overflow-auto row py-2 text-primary border-1 border-bottom border-primary d-flex align-items-center">
+                <div class="col-8"><h4>Title</h4></div>
+                <div class="col-2 text-end"><h4>Add a task</h4></div>
+                <div class="col-2 text-end"><h4>Delete</h4></div>
+                
+                
+            </div>
+            <div>
+
+            </div>     
+            <div class="min-vh-100 overflow-auto d-flex justify-content-between">
+                <div class="status-card col-3 ma rounded-2 px-2">
+                    <h4>To Do</h4>
+                </div>
+                <div class="status-card col-3 rounded-2 px-2">
+                    <h4>Doing</h4>
+                </div>
+                <div class="status-card col-3 rounded-2">
+                    <h4>Done</h4>
+                </div>
+            </div>
+            
         </div>
     </section>
     
-    
+    <footer class="footer text-center py-2">
+        <p class="m-0">A Fawectt book</p>
+        <p class="m-0">Published by The Random House Publishing Group</p>
+        <p class="m-0">Copyright © 2022 by CodeShogun</p>
+        <p class="m-0">All rights reserved</p>
+    </footer>
 </body>
 </html>
+

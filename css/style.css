@@ -1,0 +1,16 @@
+
+.search-input{
+    outline: none;
+}
+
+.partie-aside{
+    background-color: #1E88E5;
+}
+.footer{
+    background-color: #0D47A1;
+}
+
+.status-card{
+    min-height: auto;
+    background-color: #E3F2FD;
+}
