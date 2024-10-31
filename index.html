@@ -4,28 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To DO List</title>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body class="overflow-x">
-    <section class="Todoliste-page d-flex h-auto ">
+    <section class="Todoliste-page d-flex ">
         <!-- partie d'aside -->
         <aside class="partie-aside w-auto">
-            <h1>To Do Liste</h1>
+            <h2>To Do Liste</h2>
             <details class="text-center w-75 ">
                 <summary class="list-unstyled">Invit Workspace<i class="fa-solid fa-chevron-down fa-2xs"></i></summary>
                 <details >
                     <summary class="list-unstyled">Add +</summary>
                     <input class="input-group" type="text" placeholder="Title">
-                    <a href="">Add</a>
+                    <button class="bnt btn-primary my-1 rounded-pill">Add</button>
                 </details>
             </details>
         </aside>
         
         <div class="w-100 d-flex flex-column align-items-center gap-3 px-5">
             <!--header-->
-            <div class="d-flex justify-content-between px-3 p-1 w-100">
+            <div class="d-flex justify-content-between align-items-center px-3 p-1 w-100">
                 <div>
                     <input class="search-input border-0 rounded-pill w-100  px-3" type="search" placeholder="search">
                     <!-- <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>  -->
@@ -36,7 +36,7 @@
                 </div>
             </div>  
             <!-- page d'introduction  -->
-            <div class="w-100 vh-100  d-flex flex-column justify-content-evenly align-items-center">
+            <div class="w-100 min-vh-100  d-flex flex-column justify-content-evenly align-items-center">
                 <h1>Welcome to “ To Do List ” !</h1>
                 <p class="w-75 text-center lh-lg">We are thrilled to have you join us in your new productivity space Here, you can easily organize your daily tasks, stay focused on your goals, and maximize your efficiency.</p>
                 <h2 class="w-75">Why use our To Do List?</h2>
@@ -53,13 +53,13 @@
                 <p class="w-75 text-center lh-lg">Start creating your task list now and discover how easy it is to stay organized and motivated. Don’t hesitate to explore all the features to customize your experience.</p>
             </div>
             <!-- partie de workspace -->
-            <div class="w-100 d-none row py-2 text-primary border-1 border-bottom border-primary d-flex align-items-center">
+            <div class="w-100 row py-2 text-primary border-1 border-bottom border-primary d-flex align-items-center">
                 <div class="col-8"><h4>Title</h4></div>
                 <div class="col-2 text-end"><h4>Add a task</h4></div>
                 <div class="col-2 text-end"><h4>Delete</h4></div>
             </div>
             <!--  form d'entrer les donner d'un card -->
-            <div class="d-none form-position w-50">
+            <div class=" form-position w-50">
                 <form class="form-card d-flex flex-column align-items-center gap-4 p-3 border border-primary" >
                     <div class="row w-100">
                         <label class="col-6" for="title">Title</label>
@@ -71,7 +71,8 @@
                     </div>
                     <div class="row w-100 ">
                         <label class="col-6" for="status">Status</label>
-                        <select class="col-6 border-0 rounded-2" name="status" id="Status" required>
+                        <select class="col-6 border-0 rounded-2" name="status" id="status" required>
+                            <option value="">-</option>
                             <option value="To Do">To Do</option>
                             <option value="Doing">Doing</option>
                             <option value="Done">Done</option>
@@ -86,6 +87,7 @@
                     <div class="row w-100 ">
                         <label class="col-6" for="priority">Priority</label>
                         <select class="col-6 border-0 rounded-2" name="priority" id="priority" required>
+                            <option value="">-</option>
                             <option value="P1">P1</option>
                             <option value="P2">P2</option>
                             <option value="P3">P3</option>
@@ -95,15 +97,15 @@
                 </form>     
             </div>
             
-            <div class="d-none w-100 min-vh-100 d-flex justify-content-between flex-row">
-                <div class="status-card col-3 ma rounded-2 px-2">
-                    <h4>To Do</h4>
+            <div class="container min-vh-100 d-flex justify-content-between flex-row">
+                <div class="divesion-card col-3 ma rounded-2 px-3">
+                    <h4 class="my-2">To Do</h4>
                 </div>
-                <div class="status-card col-3 rounded-2 px-2">
-                    <h4>Doing</h4>
+                <div class="divesion-card col-3 rounded-2 px-3">
+                    <h4 class="my-2">Doing</h4>
                 </div>
-                <div class="status-card col-3 rounded-2">
-                    <h4>Done</h4>
+                <div class="divesion-card col-3 rounded-2 px-3">
+                    <h4 class="my-2">Done</h4>
                 </div>
             </div>
             

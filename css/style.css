@@ -10,17 +10,22 @@
 .partie-aside{
     background-color: #1E88E5;
 }
-.footer{
-    background-color: #0D47A1;
-}
+
 
 .form-card input,
 select{
     height: 3rem;
 }
 
-.status-card{
-    min-height: 8rem;
-    max-height: 24rem;
+.divesion-card{
+    height: 8rem;
     background-color: #E3F2FD;
+}
+
+.divesion-card h4{
+    font-size: 2vw;
+}
+
+.footer{
+    background-color: #0D47A1;
 }
