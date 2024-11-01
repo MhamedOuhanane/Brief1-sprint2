@@ -1,8 +1,11 @@
-let task_title = document.getElementById("title");
+
+
+
+let task_title = document.getElementById("title"); 
 let card_title = document.createElement('div');
 card_title.className = "task-title";
 
-let task_descr = document.getElementById("description");
+let task_descr = document.getElementById("descreption");
 let card_descr = document.createElement('div');
 card_descr.className = "task-descr";
 
@@ -14,28 +17,26 @@ card_time.className = "task-time";
 
 let task_date = document.getElementById("date");
 let card_date = document.createElement('div');
-card_time.className = "task-date";
+card_date.className = "task-date";
 
 let task_priority = document.getElementById("priority");
 
 let Add_card = document.getElementById("submit");
 
 Add_card.onclick = function() {
+
     let card = document.createElement('div');
     card.className = "task";
 
-    card_title.appendChild(document.createTextNode(task_title.value));
-    card_time.appendChild(document.createTextNode(task_time.value));
-    card_date.appendChild(document.createTextNode( task_date.value));
-    // card_descr.appendChild(document.createTextNode(task_descr.value));
+    card_title.innerHTML = task_title.value ;
+    card_time.innerHTML = task_time.value;
+    card_date.innerHTML = task_date.value ;
+    card_descr.innerHTML = task_descr.value;
 
     let task_delete = document.createElement('button');
     task_delete.textContent = "Delete";
     task_delete.className = "task-delete";
-    let delete_Id = new Date();
-    task_delete.Id = "delete_Id";
-    console.log(task_delete.Id);
-    delete_Id.onclick = function(){
+    task_delete.onclick = function(){
         card.remove();
     }
 
@@ -85,11 +86,15 @@ Add_card.onclick = function() {
     else if (task_status.value === "Done") {
         document.getElementById("Done").appendChild(card);
     }
-
-    task_title.value = "";
-    task_descr.value = "";
-    task_time.value = "";
-    task_date.value = "";
-
+    
+    
     console.log(card);
 }
+
+
+        task_title.value = "";
+        task_descr.value = "";
+        task_time.value = "";
+        task_date.value = "";
+        task_status.value = "/-";
+        task_priority.value = "/-";
