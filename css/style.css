@@ -10,9 +10,6 @@
     background-color: #1E88E5;
 }
 
-#Ajout-card{
-    width: 50%;
-}
 
 .form-card{
     display: block;
@@ -26,7 +23,7 @@ select{
 
 .divesion-card{
     min-height: 30vh;
-    width: 24vw;
+    width: 23vw;
     background-color: #E3F2FD; 
 }
 
