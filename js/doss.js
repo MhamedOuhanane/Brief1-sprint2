@@ -8,9 +8,7 @@ let cancel_task = document.getElementById("cancel-task");
 let Ajout_card = document.getElementById("Ajout-card");
 let List_card = document.getElementById("List-card");
 
-let disp1 = String, disp2 = String;
-let vis_hid = String;
-
+    //  Masquer & Afficher
 function AddTransform(disp1, disp2 , vis_hid) {
     add_task.style.visibility = vis_hid;
     cancel_task.classList.remove(disp1);
@@ -25,6 +23,9 @@ function AddTransform(disp1, disp2 , vis_hid) {
     List_card.classList.add(disp1);
     List_card.classList.remove(disp2);
 }
+
+
+
 
 add_task.onclick = function() {
     
@@ -59,7 +60,7 @@ add_task.onclick = function() {
 
     let task_priority = document.getElementById("priority");
 
-    let Add_card = document.getElementById("submit");
+    let Add_card = document.getElementById("Add");
 
     Add_card.onclick = function() {
 
@@ -104,41 +105,84 @@ add_task.onclick = function() {
         card.appendChild(card_descr);
         card.appendChild(task_delete);
         card.appendChild(task_done);
+        
+        // fonction donne la position de la card ajouter
 
-        switch (task_priority.value) {
-            case "P1":
-                card.style.border = "2px solid red";
-                card.style.borderLeft = "10px solid red";
-                break;
-            
-            case "P2":
-                card.style.border = "2px solid orange";
-                card.style.borderLeft = "10px solid orange";
-                break;
-            case "P3":
-                card.style.border = "2px solid green";
-                card.style.borderLeft = "10px solid green";
-                break;
-            
-            default:
-                break;
+        function ChoisStatus(CARD) {
+            switch (task_priority.value) {
+                case "P1":
+                    CARD.style.border = "2px solid red";
+                    CARD.style.borderLeft = "10px solid red";
+                    break;
+                
+                case "P2":
+                    CARD.style.border = "2px solid orange";
+                    CARD.style.borderLeft = "10px solid orange";
+                    break;
+                case "P3":
+                    CARD.style.border = "2px solid green";
+                    CARD.style.borderLeft = "10px solid green";
+                    break;
+                
+                default:
+                    break;
+            }
         }
 
-        if (task_status.value === "To Do") {
-            document.getElementById("To-Do").appendChild(card);
-            // To_Do_compteur++;
-            // document.getElementsByClassName("To-Do-compteur").innerHTML = To_Do_compteur;
+        function ChoisPriority(CARD , compt){
+            if (task_status.value === "To Do") {
+                document.getElementById("To-Do").appendChild(CARD);
+                // To_Do_compteur += compt;
+                // document.getElementsByClassName("To-Do-compteur").innerHTML = To_Do_compteur;
+            }
+            else if (task_status.value === "Doing") {
+                document.getElementById("Doing").appendChild(CARD);
+                // Doing_compteur += compt;
+                // document.getElementsByClassName("Doing-compteur").innerHTML = Doing_compteur ;
+            }
+            else if (task_status.value === "Done") {
+                document.getElementById("Done").appendChild(CARD);
+                // Done_compteur += compt;
+                // document.getElementsByClassName("Done-compteur").innerHTML = Done_compteur;
+            }
         }
-        else if (task_status.value === "Doing") {
-            document.getElementById("Doing").appendChild(card);
-            // Doing_compteur++;
-            // document.getElementsByClassName("Doing-compteur").innerHTML = Doing_compteur ;
+
+        ChoisStatus(card);
+        ChoisPriority(card , 1);
+
+        let task_modifier = document.createElement('button');
+        task_modifier.className = "task-modifier";
+        task_modifier.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#90caf9" d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344 121.9 390.1 168 255.8 302.2c-2.9 2.9-6.5 5-10.4 6.1l-58.5 16.7 16.7-58.5c1.1-3.9 3.2-7.5 6.1-10.4zM373.1 25L175.8 222.2c-8.7 8.7-15 19.4-18.3 31.1l-28.6 100c-2.4 8.4-.1 17.4 6.1 23.6s15.2 8.5 23.6 6.1l100-28.6c11.8-3.4 22.5-9.7 31.1-18.3L487 138.9c28.1-28.1 28.1-73.7 0-101.8L474.9 25C446.8-3.1 401.2-3.1 373.1 25zM88 64C39.4 64 0 103.4 0 152L0 424c0 48.6 39.4 88 88 88l272 0c48.6 0 88-39.4 88-88l0-112c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 112c0 22.1-17.9 40-40 40L88 464c-22.1 0-40-17.9-40-40l0-272c0-22.1 17.9-40 40-40l112 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L88 64z"/></svg>'
+        card.appendChild(task_modifier);
+        
+        task_modifier.onclick = function() {
+            AddTransform("d-none", "d-block" , "hidden");
+
+            cancel_task.onclick = function(){
+                AddTransform("d-block", "d-none" , "visible");
+            }
+
+            document.getElementById("title").value = task_title.value;
+            document.getElementById("description").value = task_descr.value;
+            document.getElementById("time").value = task_time.value;
+            document.getElementById("date").value = task_date.value;
+            const comparer_ststus = document.getElementById("status").value;
+            document.getElementById("status").value = task_status.value;
+            document.getElementById("priority").value = task_priority.value;
+            Add_card.classList.add("d-none");
+            
+            let modifier = document.getElementById("Modifier");
+            modifier.classList.remove("d-none");
+            modifier.onclick = function(){
+                
+
+                AddTransform("d-block", "d-none" , "visible");
+            }
+        
+
         }
-        else if (task_status.value === "Done") {
-            document.getElementById("Done").appendChild(card);
-            // Done_compteur++;
-            // document.getElementsByClassName("Done-compteur").innerHTML = Done_compteur;
-        }
+
+
 
         AddTransform("d-block", "d-none" , "visible");
         

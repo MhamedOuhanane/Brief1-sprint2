@@ -56,50 +56,54 @@
             </div>
             
             <!-- partie de workspace -->
+            
             <div class="w-100 row py-2 text-primary border-1 border-bottom border-primary d-flex align-items-center">
                 <div class="col-8"><h4>Title</h4></div>
                 <div id="add-task" class="col-2 text-end "><h4>Add a task</h4></div>
                 <div  class="col-2 text-end"><h4 id="delete-task">Delete</h4> <h4 id="cancel-task" class="d-none">Cancel</h4></div>
                 
             </div>
+
             <!--  form d'entrer les donner d'un card -->
-            <div id="Ajout-card" class="w-50 d-none">
-                <div class="form-card d-flex flex-column align-items-center gap-4 p-3 border border-primary w-100">
-                    <div class="row w-100">
-                        <label class="col-6" for="title">Title</label>
-                        <input class="col-6 rounded-2 border-0" id="title" type="text" placeholder="title" required>
-                    </div>
-                    <div class="row w-100">
-                        <label class="col-6" for="descreption">Descreption</label>
-                        <input class="col-6 rounded-2 border-0" id="description" type="text" placeholder="descreption" required>
-                    </div>
-                    <div class="row w-100 ">
-                        <label class="col-6" for="status">Status</label>
-                        <select class="col-6 border-0 rounded-2" name="status" id="status" required>
-                            <option value="">-</option>
-                            <option value="To Do">To Do</option>
-                            <option value="Doing">Doing</option>
-                            <option value="Done">Done</option>
-                        </select>
-                    </div>
+
+            <div id="Ajout-card" class="form-card d-flex flex-column align-items-center gap-4 p-3 border border-primary w-50 d-none mb-3">
+                <div class="row w-100">
+                    <label class="col-6" for="title">Title</label>
+                    <input class="col-6 rounded-2 border-0" id="title" type="text" placeholder="title" required>
+                </div>
+
+                <div class="row w-100">
+                    <label class="col-6" for="descreption">Descreption</label>
+                    <input class="col-6 rounded-2 border-0" id="description" type="text" placeholder="descreption" required>
+                </div>
+
+                <div class="row w-100 ">
+                    <label class="col-6" for="status">Status</label>
+                    <select class="col-6 border-0 rounded-2" name="status" id="status" required>
+                        <option value="">-</option>
+                        <option value="To Do">To Do</option>
+                        <option value="Doing">Doing</option>
+                        <option value="Done">Done</option>
+                    </select>
+                </div>
+
+                <div class="row w-100">
+                    <label class="col-6" for="date">Due date</label>
+                    <input class="col-3 rounded-start-2 border-0" type="time"  id="time" required>
+                    <input class="col-3 rounded-end-2 border-0" id="date" type="date" required>
+                </div>
     
-                    <div class="row w-100">
-                        <label class="col-6" for="date">Due date</label>
-                        <input class="col-3 rounded-start-2 border-0" type="time"  id="time" required>
-                        <input class="col-3 rounded-end-2 border-0" id="date" type="date" required>
-                    </div>
-    
-                    <div class="row w-100 ">
-                        <label class="col-6" for="priority">Priority</label>
-                        <select class="col-6 border-0 rounded-2" name="priority" id="priority" required>
-                            <option value="">-</option>
-                            <option value="P1">P1</option>
-                            <option value="P2">P2</option>
-                            <option value="P3">P3</option>
-                        </select>
-                    </div>
-                    <button id="submit" class=" col-2 btn btn-primary border-0" type="submit" >Add</button>
-                </div>     
+                <div class="row w-100 ">
+                    <label class="col-6" for="priority">Priority</label>
+                    <select class="col-6 border-0 rounded-2" name="priority" id="priority" required>
+                        <option value="">-</option>
+                        <option value="P1">P1</option>
+                        <option value="P2">P2</option>
+                        <option value="P3">P3</option>
+                    </select>
+                </div>
+                <button id="Add" class=" col-2 btn btn-primary border-0" type="submit" >Add</button>
+                <button id="Modifier" class=" col-2 btn btn-success w-auto text-center border-0 d-none" type="submit" >Modifier</button>
             </div>
             <!-- liste des cards ajouter -->
             <div id="List-card" class="d-flex justify-content-between flex-wrap mb-5 w-100 ">
