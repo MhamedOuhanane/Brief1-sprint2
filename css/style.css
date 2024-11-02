@@ -10,6 +10,13 @@
     background-color: #1E88E5;
 }
 
+#Ajout-card{
+    width: 50%;
+}
+
+.form-card{
+    display: block;
+}
 
 .form-card input,
 select{
@@ -17,27 +24,22 @@ select{
 }
 
 
-
 .divesion-card{
-    min-height: 20vh;
+    min-height: 30vh;
     width: 24vw;
-    background-color: #E3F2FD;
-    
+    background-color: #E3F2FD; 
 }
 
 #To-Do{
     max-height: 120vh;
-    overflow-y: auto;
 }
 
 #Doing{
     max-height: 120vh;
-    overflow-y: auto;
 }
 
 #Done{
     max-height: 120vh;
-    overflow-y: auto;
 }
 
 .div-tasks::-webkit-scrollbar {
@@ -85,7 +87,6 @@ select{
     grid-row: 2 / 4;
     height: 100%;
     overflow-y: auto;
-    overflow-x: hidden;
 }
 
 .task-title::-webkit-scrollbar,
@@ -118,6 +119,10 @@ select{
     justify-content: space-evenly;
 }
 
+/* .done-input:checked ~ .task-done{
+    background-color: green;
+
+} */
 
 
 

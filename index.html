@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To DO List</title>
+    <title>To Do List</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -36,38 +36,42 @@
                 </div>
             </div>  
             <!-- page d'introduction  -->
-            <div class=" w-100 min-vh-100  d-flex flex-column justify-content-evenly align-items-center">
-                <h1>Welcome to “ To Do List ” !</h1>
-                <p class="w-75 text-center lh-lg">We are thrilled to have you join us in your new productivity space Here, you can easily organize your daily tasks, stay focused on your goals, and maximize your efficiency.</p>
-                <h2 class="w-75">Why use our To Do List?</h2>
-                <ul class="w-75 gap-3 d-flex flex-column text-align-center">
-                    <li><strong>Simplicity:</strong> Add, edit, and delete your tasks with just a few clicks.
-                    </li>
-    
-                    <li><strong>Organization:</strong> Sort your tasks by categories or priorities for 
-                        clear and effective management.</li>
-    
-                    <li><strong>Tracking:</strong> Check off your tasks as you complete them and 
-                        feel the satisfaction of each accomplishment.</li>
-                </ul>
-                <p class="w-75 text-center lh-lg">Start creating your task list now and discover how easy it is to stay organized and motivated. Don’t hesitate to explore all the features to customize your experience.</p>
+            <div id="introduction"  hidden>
+                <div class=" w-100 min-vh-100  d-flex flex-column justify-content-evenly align-items-center">
+                    <h1>Welcome to “ To Do List ” !</h1>
+                    <p class="w-75 text-center lh-lg">We are thrilled to have you join us in your new productivity space Here, you can easily organize your daily tasks, stay focused on your goals, and maximize your efficiency.</p>
+                    <h2 class="w-75">Why use our To Do List?</h2>
+                    <ul class="w-75 gap-3 d-flex flex-column text-align-center">
+                        <li><strong>Simplicity:</strong> Add, edit, and delete your tasks with just a few clicks.
+                        </li>
+        
+                        <li><strong>Organization:</strong> Sort your tasks by categories or priorities for 
+                            clear and effective management.</li>
+        
+                        <li><strong>Tracking:</strong> Check off your tasks as you complete them and 
+                            feel the satisfaction of each accomplishment.</li>
+                    </ul>
+                    <p class="w-75 text-center lh-lg">Start creating your task list now and discover how easy it is to stay organized and motivated. Don’t hesitate to explore all the features to customize your experience.</p>
+                </div>
             </div>
+            
             <!-- partie de workspace -->
             <div class="w-100 row py-2 text-primary border-1 border-bottom border-primary d-flex align-items-center">
                 <div class="col-8"><h4>Title</h4></div>
-                <div class="col-2 text-end"><h4>Add a task</h4></div>
-                <div class="col-2 text-end"><h4>Delete</h4></div>
+                <div id="add-task" class="col-2 text-end "><h4>Add a task</h4></div>
+                <div  class="col-2 text-end"><h4 id="delete-task">Delete</h4> <h4 id="cancel-task" class="d-none">Cancel</h4></div>
+                
             </div>
             <!--  form d'entrer les donner d'un card -->
-            <div class=" w-50" id="Ajout-card">
-                <div class="form-card d-flex flex-column align-items-center gap-4 p-3 border border-primary" >
+            <div id="Ajout-card" class="w-50 d-none">
+                <div class="form-card d-flex flex-column align-items-center gap-4 p-3 border border-primary w-100">
                     <div class="row w-100">
                         <label class="col-6" for="title">Title</label>
                         <input class="col-6 rounded-2 border-0" id="title" type="text" placeholder="title" required>
                     </div>
                     <div class="row w-100">
                         <label class="col-6" for="descreption">Descreption</label>
-                        <input class="col-6 rounded-2 border-0" id="descreption" type="text" placeholder="descreption" required>
+                        <input class="col-6 rounded-2 border-0" id="description" type="text" placeholder="descreption" required>
                     </div>
                     <div class="row w-100 ">
                         <label class="col-6" for="status">Status</label>
@@ -97,28 +101,28 @@
                     <button id="submit" class=" col-2 btn btn-primary border-0" type="submit" >Add</button>
                 </div>     
             </div>
-            
-            <div class="d-flex justify-content-between flex-wrap mb-5 w-100">
+            <!-- liste des cards ajouter -->
+            <div id="List-card" class="d-flex justify-content-between flex-wrap mb-5 w-100 ">
                 <div class="divesion-card col-3 ma rounded-2 px-3 ">
                     <div class="row d-flex align-items-center my-3">
-                        <h4 class="col-4">To Do</h4>
+                        <h4 class="col-4">To do</h4>
                         <h5 class="To-Do-compteur col-2">0</h5>
                     </div>
-                    <div id="To-Do" class="div-tasks d-flex flex-column align-items-center mb-3" ></div>
+                    <div id="To-Do" class="div-tasks d-flex flex-column align-items-center overflow-y-auto mb-3" ></div>
                 </div>
                 <div class="divesion-card col-3 rounded-2 px-3 ">
                     <div class="row d-flex align-items-center my-3">
-                        <h4 class="col-4">Doing</h4>
+                        <h4 class="col-4">doing</h4>
                         <h5 class="Doing-compteur col-2">0</h5>
                     </div>
-                    <div id="Doing" class="div-tasks d-flex flex-column align-items-center mb-3"></div>
+                    <div id="Doing" class="div-tasks d-flex flex-column align-items-center overflow-y-auto mb-3"></div>
                 </div>
                 <div class="divesion-card col-3 rounded-2 px-3 ">
                     <div class="row  d-flex align-items-center my-3">
-                        <h4 class="col-4">Done</h4>
+                        <h4 class="col-4">done</h4>
                         <h5 class="Done-compteur col-2 ">0</h5>
                     </div>
-                    <div id="Done" class="div-tasks d-flex flex-column align-items-center mb-3"></div>
+                    <div id="Done" class="div-tasks d-flex flex-column align-items-center overflow-y-auto mb-3"></div>
                 </div>
             </div>
             
