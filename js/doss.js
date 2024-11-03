@@ -52,7 +52,6 @@ add_task.onclick = function() {
 
     let task_priority = document.getElementById("priority");
     let cont_priority = document.createElement('p');
-    cont_priority.textContent = task_status.value;
 
     let Add_card = document.getElementById("Add");
 
@@ -60,6 +59,8 @@ add_task.onclick = function() {
 
         let card = document.createElement('div');
         card.className = "task";
+        const card_Id = Date.now().toString();
+        card.id = card_Id;
 
         card_title.innerHTML = task_title.value ;
         card_time.innerHTML = task_time.value;
@@ -68,18 +69,23 @@ add_task.onclick = function() {
 
         let task_delete = document.createElement('button');
         task_delete.textContent = "Delete";
+        task_delete.id = `Delete-${card_Id}`
         task_delete.className = "task-delete";
         task_delete.onclick = function(){
-            card.remove();
-            if (task_status.value === "To Do") {
+            const card_delete = document.getElementById(`${card_Id}`);
+
+            const task_status_value = card_delete.children[6].textContent;
+            console.log(task_status_value);
+            if (task_status_value === "To Do") {
                 ToDoCompteur(-1);
             }
-            else if (task_status.value === "Doing") {
+            else if (task_status_value === "Doing") {
                 DoingCompteur(-1);
             }
-            else if (task_status.value === "Done") {
+            else if (task_status_value === "Done") {
                 DoneCompteur(-1);
             }
+            card_delete.remove();
         }
 
 
@@ -104,8 +110,13 @@ add_task.onclick = function() {
 
         card.appendChild(cont_status);
         cont_status.style.display = "none";
+        cont_status.id = `status-${card_Id}`;
+        cont_status.textContent = task_status.value;
+
         card.appendChild(cont_priority);
         cont_priority.style.display = "none";
+        cont_priority.id = `priority-${card_Id}`;
+        cont_priority.textContent = task_priority.value;
 
         
         
@@ -170,18 +181,8 @@ add_task.onclick = function() {
         
         let task_modifier = document.createElement('button');
         task_modifier.className = "task-modifier";
-        let Modi_Id = Date.now().toString();
+        task_modifier.id = `Modi-${card_Id}`;
         
-        task_modifier.id = Modi_Id;
-        card.id = `card-${Modi_Id}`;
-        task_delete = `Delete-${Modi_Id}`;
-        cont_status.id = `status-${Modi_Id}`;
-        cont_status.textContent = task_status.value;
-        console.log(cont_status);
-
-        cont_priority.id = `priority-${Modi_Id}`;
-        cont_priority.textContent = task_priority.value;
-        console.log(cont_priority);
         
 
 
@@ -197,17 +198,19 @@ add_task.onclick = function() {
             }
             Add_card.classList.add("d-none");
 
-            
-            let modi_id = task_modifier.id ;
-            let card_modi = document.getElementById(`card-${modi_id}`);
+            let card_modi = document.getElementById(`${card_Id}`);
             task_title.value = card_modi.children[0].textContent;
             task_time.value = card_modi.children[1].textContent;
             task_date.value = card_modi.children[2].textContent;
             task_descr.value = card_modi.children[3].textContent; 
 
             const status_value = card_modi.children[6].textContent; 
+            task_status = document.getElementById("status");
+            task_status.value = status_value;
             console.log(status_value);
             const priority_value = card_modi.children[7].textContent; 
+            task_priority = document.getElementById("priority");
+            task_priority.value = priority_value;
 
             let modifier = document.getElementById("Modifier");
             modifier.classList.remove("d-none");
@@ -218,29 +221,31 @@ add_task.onclick = function() {
                 card_date.innerHTML = task_date.value ;
                 card_descr.innerHTML = task_descr.value;
 
-                task_status = document.getElementById("status");
-                task_priority = document.getElementById("priority");
+                // const N_status = document.getElementById("status");
+                // const N_priority = document.getElementById("priority");
 
                 if (priority_value !== task_priority.value) {
                     ChoisPriority(card_modi);
                 }
 
                 if (status_value !== task_status.value) {
-                    card_modi.remove();
                     if (status_value === "To Do") {
                         ToDoCompteur(-1);
-
+                        
                     } else if (status_value === "Doing") {
                         DoingCompteur(-1);
-
+                        
                     }else if (status_value === "Done") {
                         DoneCompteur(-1);
                     }
+                    card_modi.remove();
                     ChoisStatus(card_modi);
+
                 }
-                
+
+
                 cont_status.textContent = task_status.value;
-                cont_priority.textContent = task_status.value;
+                cont_priority.textContent = task_priority.value;
 
                 AddTransform("d-block", "d-none" , "visible");
                 modifier.classList.add("d-none");
