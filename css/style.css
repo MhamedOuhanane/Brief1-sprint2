@@ -1,5 +1,16 @@
+
+*{
+    box-sizing: border-box;
+}
+
+#Shadow{
+    min-height: 50vw;
+}
+
 .Todoliste-page{
     background-color: #90CAF9;
+    width: 100%;
+    min-height: 50vw;
 }
 
 .search-input{
@@ -12,7 +23,8 @@
 
 
 .form-card{
-    display: block;
+    width: 40%;
+    background-color: #90CAF9;
 }
 
 .form-card input,
@@ -24,19 +36,19 @@ select{
 .divesion-card{
     min-height: 30vh;
     width: 23vw;
-    background-color: #E3F2FD; 
+    background-color: #E3F2FD;
 }
 
 #To-Do{
-    max-height: 120vh;
+    max-height: 100vh;
 }
 
 #Doing{
-    max-height: 120vh;
+    max-height: 100vh;
 }
 
 #Done{
-    max-height: 120vh;
+    max-height: 100vh;
 }
 
 .div-tasks::-webkit-scrollbar {

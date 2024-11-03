@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-<body>
-    <section class="Todoliste-page row w-100 min-vh-100">
+<body >
+    <div id="Shadow" class="w-100 bg-black  opacity-25 opacity-2 position-absolute d-none"></div>
+    <section class="Todoliste-page d-flex">
         <!-- partie d'aside -->
-        <aside class="partie-aside col-2">
+        <aside class="partie-aside">
             <h2>To Do Liste</h2>
-            <details class="text-center col-2 ">
+            <details class="text-center ">
                 <summary class="list-unstyled">Invit Workspace<i class="fa-solid fa-chevron-down fa-2xs"></i></summary>
                 <details >
                     <summary class="list-unstyled">Add +</summary>
@@ -23,17 +24,18 @@
             </details>
         </aside>
         
-        <div class="col-10 min-h-100 d-flex flex-column align-items-center gap-3 px-5">
+        <div class="min-vh-100 w-100 d-flex flex-column gap-3 px-5 ">
             <!--header-->
-            <div class="d-flex justify-content-between align-items-center px-3 p-1 w-100">
-                <div>
-                    <input class="search-input border-0 rounded-pill w-100  px-3" type="search" placeholder="search">
-                    <!-- <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>  -->
+            <div class="row py-2 w-100">
+                <div class="col-9 d-flex align-items-center">
+                    <input class="search-input border-0 rounded-pill  px-3" type="search" placeholder="search">
+                <!-- <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>  -->
                 </div>
-                <div class="w-25 d-flex justify-content-evenly ">
-                    <button class="btn btn-outline-light text-black ">Sign in</button>
-                    <button class="btn btn-primary text-black ">Sign up</button>
+                <div class="col-3 d-flex justify-content-evenly">
+                    <button class="btn btn-outline-light text-black">Sign in</button>
+                    <button class="btn btn-primary text-black">Sign up</button>
                 </div>
+                
             </div>  
             <!-- page d'introduction  -->
             <div id="introduction"  hidden>
@@ -57,78 +59,80 @@
             
             <!-- partie de workspace -->
             
-            <div class="w-100 row py-2 text-primary border-1 border-bottom border-primary d-flex align-items-center">
+            <div class="w-100 row py-2 text-primary border-1 border-bottom border-primary d-flex align-items-center position-relative">
                 <div class="col-8"><h4>Title</h4></div>
                 <div id="add-task" class="col-2 text-end "><h4>Add a task</h4></div>
-                <div  class="col-2 text-end"><h4 id="delete-task">Delete</h4> <h4 id="cancel-task" class="d-none">Cancel</h4></div>
+                <div  class="col-2 text-end"><h4 id="delete-task">Delete</h4> <h4 id="cancel-task" class="d-none text-light">Cancel</h4></div>
                 
             </div>
 
-            <!--  form d'entrer les donner d'un card -->
+            <div class="w-100 d-flex justify-content-center">
+                <!--  form d'entrer les donner d'un card -->
+                <div id="Ajout-card" class="form-card d-flex flex-column align-items-center gap-4 p-3 border border-primary mb-3 position-absolute d-none">
+                    <div class="row w-100 d-flex align-items-center">
+                        <label class="col-6" for="title">Title</label>
+                        <input class="col-6 rounded-2 border-0" id="title" type="text" placeholder="title" required>
+                    </div>
 
-            <div id="Ajout-card" class="form-card d-flex flex-column align-items-center gap-4 p-3 border border-primary w-50 d-none mb-3">
-                <div class="row w-100">
-                    <label class="col-6" for="title">Title</label>
-                    <input class="col-6 rounded-2 border-0" id="title" type="text" placeholder="title" required>
-                </div>
-
-                <div class="row w-100">
-                    <label class="col-6" for="descreption">Descreption</label>
-                    <input class="col-6 rounded-2 border-0" id="description" type="text" placeholder="descreption" required>
-                </div>
-
-                <div class="row w-100 ">
-                    <label class="col-6" for="status">Status</label>
-                    <select class="col-6 border-0 rounded-2" name="status" id="status" required>
-                        <option value="">-</option>
-                        <option value="To Do">To Do</option>
-                        <option value="Doing">Doing</option>
-                        <option value="Done">Done</option>
-                    </select>
-                </div>
-
-                <div class="row w-100">
-                    <label class="col-6" for="date">Due date</label>
-                    <input class="col-3 rounded-start-2 border-0" type="time"  id="time" required>
-                    <input class="col-3 rounded-end-2 border-0" id="date" type="date" required>
-                </div>
+                    <div class="row w-100 d-flex align-items-center">
+                        <label class="col-6" for="descreption">Descreption</label>
+                        <input class="col-6 rounded-2 border-0" id="description" type="text" placeholder="descreption" required>
+                    </div>
     
-                <div class="row w-100 ">
-                    <label class="col-6" for="priority">Priority</label>
-                    <select class="col-6 border-0 rounded-2" name="priority" id="priority" required>
-                        <option value="">-</option>
-                        <option value="P1">P1</option>
-                        <option value="P2">P2</option>
-                        <option value="P3">P3</option>
-                    </select>
+                    <div class="row w-100 d-flex align-items-center">
+                        <label class="col-6" for="status">Status</label>
+                        <select class="col-6 border-0 rounded-2" name="status" id="status" required>
+                            <option value="">-</option>
+                            <option value="To Do">To Do</option>
+                            <option value="Doing">Doing</option>
+                            <option value="Done">Done</option>
+                        </select>
+                    </div>
+    
+                    <div class="row w-100 d-flex align-items-center">
+                        <label class="col-6" for="date">Due date</label>
+                        <input class="col-3 rounded-start-2 border-0" type="time"  id="time" required>
+                        <input class="col-3 rounded-end-2 border-0" id="date" type="date" required>
+                    </div>
+        
+                    <div class="row w-100 d-flex align-items-center">
+                        <label class="col-6" for="priority">Priority</label>
+                        <select class="col-6 border-0 rounded-2" name="priority" id="priority" required>
+                            <option value="">-</option>
+                            <option value="P1">P1</option>
+                            <option value="P2">P2</option>
+                            <option value="P3">P3</option>
+                        </select>
+                    </div>
+                    <button id="Add" class=" col-2 btn btn-primary border-0" type="submit" >Add</button>
+                    <button id="Modifier" class=" col-2 btn btn-success w-auto text-center border-0 d-none" type="submit" >Modifier</button>
                 </div>
-                <button id="Add" class=" col-2 btn btn-primary border-0" type="submit" >Add</button>
-                <button id="Modifier" class=" col-2 btn btn-success w-auto text-center border-0 d-none" type="submit" >Modifier</button>
+                <!-- liste des cards ajouter -->
+                <div id="List-card" class="d-flex justify-content-between flex-wrap mb-5 w-100 ">
+                    <div class="divesion-card col-3 ma rounded-2 px-3 ">
+                        <div class="row d-flex align-items-center my-3">
+                            <h4 class="col-4">To do</h4>
+                            <h5 class="To-Do-compteur col-2">0</h5>
+                        </div>
+                        <div id="To-Do" class="div-tasks d-flex flex-column align-items-center overflow-y-auto mb-3" ></div>
+                    </div>
+                    <div class="divesion-card col-3 rounded-2 px-3 ">
+                        <div class="row d-flex align-items-center my-3">
+                            <h4 class="col-4">doing</h4>
+                            <h5 class="Doing-compteur col-2">0</h5>
+                        </div>
+                        <div id="Doing" class="div-tasks d-flex flex-column align-items-center overflow-y-auto mb-3"></div>
+                    </div>
+                    <div class="divesion-card col-3 rounded-2 px-3 ">
+                        <div class="row  d-flex align-items-center my-3">
+                            <h4 class="col-4">done</h4>
+                            <h5 class="Done-compteur col-2 ">0</h5>
+                        </div>
+                        <div id="Done" class="div-tasks d-flex flex-column align-items-center overflow-y-auto mb-3"></div>
+                    </div>
+                </div>
             </div>
-            <!-- liste des cards ajouter -->
-            <div id="List-card" class="d-flex justify-content-between flex-wrap mb-5 w-100 ">
-                <div class="divesion-card col-3 ma rounded-2 px-3 ">
-                    <div class="row d-flex align-items-center my-3">
-                        <h4 class="col-4">To do</h4>
-                        <h5 class="To-Do-compteur col-2">0</h5>
-                    </div>
-                    <div id="To-Do" class="div-tasks d-flex flex-column align-items-center overflow-y-auto mb-3" ></div>
-                </div>
-                <div class="divesion-card col-3 rounded-2 px-3 ">
-                    <div class="row d-flex align-items-center my-3">
-                        <h4 class="col-4">doing</h4>
-                        <h5 class="Doing-compteur col-2">0</h5>
-                    </div>
-                    <div id="Doing" class="div-tasks d-flex flex-column align-items-center overflow-y-auto mb-3"></div>
-                </div>
-                <div class="divesion-card col-3 rounded-2 px-3 ">
-                    <div class="row  d-flex align-items-center my-3">
-                        <h4 class="col-4">done</h4>
-                        <h5 class="Done-compteur col-2 ">0</h5>
-                    </div>
-                    <div id="Done" class="div-tasks d-flex flex-column align-items-center overflow-y-auto mb-3"></div>
-                </div>
-            </div>
+            
             
         </div>
     </section>
