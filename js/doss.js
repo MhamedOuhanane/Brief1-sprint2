@@ -71,16 +71,17 @@ add_task.onclick = function() {
         task_delete.className = "task-delete";
         task_delete.onclick = function(){
             card.remove();
-            // if (task_status.value === "To Do") {
-            //     To_Do_compteur--;
-            // }
-            // else if (task_status.value === "Doing") {
-            //     Doing_compteur-- ;
-            // }
-            // else if (task_status.value === "Done") {
-            //     Done_compteur-- ;
-            // }
+            if (task_status.value === "To Do") {
+                ToDoCompteur(-1);
+            }
+            else if (task_status.value === "Doing") {
+                DoingCompteur(-1);
+            }
+            else if (task_status.value === "Done") {
+                DoneCompteur(-1);
+            }
         }
+
 
         let task_done = document.createElement('dive');
         let done_label = document.createElement('label')
@@ -131,21 +132,36 @@ add_task.onclick = function() {
             }
         }
 
+        //  Fonctionement de compteur 
+            //  Mise à jour de To Do compteur
+            function ToDoCompteur(a){
+                To_Do_compteur += a;
+                document.getElementById("To-Do-compteur").textContent = To_Do_compteur;
+            }
+            //  Mise à jour de To Do compteur
+            function DoingCompteur(a){
+                Doing_compteur += a;
+                document.getElementById("Doing-compteur").textContent = Doing_compteur;
+            }
+            //  Mise à jour de Done compteur
+            function DoneCompteur(a){
+                Done_compteur += a;
+                document.getElementById("Done-compteur").textContent = Done_compteur;
+            }
+
+
         function ChoisStatus(CARD){
             if (task_status.value === "To Do") {
                 document.getElementById("To-Do").appendChild(CARD);
-                // To_Do_compteur += compt;
-                // document.getElementsByClassName("To-Do-compteur").innerHTML = To_Do_compteur;
+                ToDoCompteur(1);
             }
             else if (task_status.value === "Doing") {
                 document.getElementById("Doing").appendChild(CARD);
-                // Doing_compteur += compt;
-                // document.getElementsByClassName("Doing-compteur").innerHTML = Doing_compteur ;
+                DoingCompteur(1);
             }
             else if (task_status.value === "Done") {
                 document.getElementById("Done").appendChild(CARD);
-                // Done_compteur += compt;
-                // document.getElementsByClassName("Done-compteur").innerHTML = Done_compteur;
+                DoneCompteur(1);
             }
         }
         
@@ -158,7 +174,7 @@ add_task.onclick = function() {
         
         task_modifier.id = Modi_Id;
         card.id = `card-${Modi_Id}`;
-        
+        task_delete = `Delete-${Modi_Id}`;
         cont_status.id = `status-${Modi_Id}`;
         cont_status.textContent = task_status.value;
         console.log(cont_status);
@@ -205,28 +221,21 @@ add_task.onclick = function() {
                 task_status = document.getElementById("status");
                 task_priority = document.getElementById("priority");
 
-                if (priority_value === task_priority.value) {
-                    return;
-                } else {
+                if (priority_value !== task_priority.value) {
                     ChoisPriority(card_modi);
                 }
 
-                if (status_value === task_status.value) {
-                    return;
-                }
-                else{
+                if (status_value !== task_status.value) {
                     card_modi.remove();
                     if (status_value === "To Do") {
-                        To_Do_compteur--;
+                        ToDoCompteur(-1);
 
                     } else if (status_value === "Doing") {
-                        Doing_compteur--;
+                        DoingCompteur(-1);
 
                     }else if (status_value === "Done") {
-                        Done_compteur--;
+                        DoneCompteur(-1);
                     }
-
-                    
                     ChoisStatus(card_modi);
                 }
                 
