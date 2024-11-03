@@ -57,6 +57,10 @@ add_task.onclick = function() {
 
     Add_card.onclick = function() {
 
+        
+
+
+
         let card = document.createElement('div');
         card.className = "task";
         const card_Id = Date.now().toString();
@@ -125,8 +129,8 @@ add_task.onclick = function() {
         function ChoisPriority(CARD) {
             switch (task_priority.value) {
                 case "P1":
-                    CARD.style.border = "2px solid red";
-                    CARD.style.borderLeft = "10px solid red";
+                    CARD.style.border = "2px solid rgb(255, 167, 167)";
+                    CARD.style.borderLeft = "10px solid rgb(255, 167, 167)";
                     break;
                 
                 case "P2":
