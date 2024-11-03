@@ -100,12 +100,18 @@ add_task.onclick = function() {
         card.appendChild(card_descr);
         card.appendChild(task_delete);
         card.appendChild(task_done);
+
+        card.appendChild(cont_status);
+        cont_status.style.display = "none";
+        card.appendChild(cont_priority);
+        cont_priority.style.display = "none";
+
         
         
         // fonction donne la position de la card ajouter
 
-        function ChoisPriority(CARD, task_priority_value) {
-            switch (task_priority_value) {
+        function ChoisPriority(CARD) {
+            switch (task_priority.value) {
                 case "P1":
                     CARD.style.border = "2px solid red";
                     CARD.style.borderLeft = "10px solid red";
@@ -125,26 +131,26 @@ add_task.onclick = function() {
             }
         }
 
-        function ChoisStatus(CARD, task_status_value){
-            if (task_status_value === "To Do") {
+        function ChoisStatus(CARD){
+            if (task_status.value === "To Do") {
                 document.getElementById("To-Do").appendChild(CARD);
                 // To_Do_compteur += compt;
                 // document.getElementsByClassName("To-Do-compteur").innerHTML = To_Do_compteur;
             }
-            else if (task_status_value === "Doing") {
+            else if (task_status.value === "Doing") {
                 document.getElementById("Doing").appendChild(CARD);
                 // Doing_compteur += compt;
                 // document.getElementsByClassName("Doing-compteur").innerHTML = Doing_compteur ;
             }
-            else if (task_status_value === "Done") {
+            else if (task_status.value === "Done") {
                 document.getElementById("Done").appendChild(CARD);
                 // Done_compteur += compt;
                 // document.getElementsByClassName("Done-compteur").innerHTML = Done_compteur;
             }
         }
         
-        ChoisStatus(card, task_status.value);
-        ChoisPriority(card, task_priority.value);
+        ChoisStatus(card);
+        ChoisPriority(card);
         
         let task_modifier = document.createElement('button');
         task_modifier.className = "task-modifier";
@@ -171,6 +177,7 @@ add_task.onclick = function() {
 
             cancel_task.onclick = function(){
                 AddTransform("d-block", "d-none" , "visible");
+                effacValue();
             }
             Add_card.classList.add("d-none");
 
@@ -182,12 +189,9 @@ add_task.onclick = function() {
             task_date.value = card_modi.children[2].textContent;
             task_descr.value = card_modi.children[3].textContent; 
 
-            const status_value = document.getElementById(`status-${modi_id}`);
-            console.log(status_value.id);
-            const priority_value = document.getElementById(`priority-${modi_id}`);
-
-            let status_modi = document.getElementById("status");
-            let priority_modi = document.getElementById("priority");
+            const status_value = card_modi.children[6].textContent; 
+            console.log(status_value);
+            const priority_value = card_modi.children[7].textContent; 
 
             let modifier = document.getElementById("Modifier");
             modifier.classList.remove("d-none");
@@ -198,35 +202,40 @@ add_task.onclick = function() {
                 card_date.innerHTML = task_date.value ;
                 card_descr.innerHTML = task_descr.value;
 
-                if (priority_value === priority_modi.value) {
+                task_status = document.getElementById("status");
+                task_priority = document.getElementById("priority");
+
+                if (priority_value === task_priority.value) {
                     return;
                 } else {
-                    ChoisPriority(card_modi , priority_modi.value);
+                    ChoisPriority(card_modi);
                 }
 
-                if (status_value === status_modi.value) {
+                if (status_value === task_status.value) {
                     return;
                 }
                 else{
                     card_modi.remove();
-                    if (status_modi.value === "To Do") {
+                    if (status_value === "To Do") {
                         To_Do_compteur--;
 
-                    } else if (status_modi.value === "Doing") {
+                    } else if (status_value === "Doing") {
                         Doing_compteur--;
 
-                    }else if (status_modi.value === "Done") {
+                    }else if (status_value === "Done") {
                         Done_compteur--;
                     }
 
-                    ChoisStatus(card, status_modi.value);
+                    
+                    ChoisStatus(card_modi);
                 }
+                
+                cont_status.textContent = task_status.value;
+                cont_priority.textContent = task_status.value;
 
                 AddTransform("d-block", "d-none" , "visible");
                 modifier.classList.add("d-none");
                 Add_card.classList.remove("d-none");
-                effacValue();
-
 
             }
             cancel_task.onclick = function(){
